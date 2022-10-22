@@ -8,18 +8,18 @@ node {
 
         stage('Build Image')
         {
-
-                image = docker.build("my-image:${env.BUILD_ID}")
+            image = docker.build("my-image:${env.BUILD_ID}")
         }
 
-      stage('Test image')
-      {
-        image.inside
+        stage('Test Image')
         {
-            sh 'maven test'
+            image.inside()
+            {
+            sh 'echo hello'
+            }
+
         }
-    }
-        
+
 
 
 }
