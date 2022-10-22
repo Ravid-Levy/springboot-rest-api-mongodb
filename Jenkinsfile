@@ -1,6 +1,5 @@
 node {
     def image 
-    stages {
         stage('Check Git')
         {
             steps
@@ -30,6 +29,6 @@ node {
         }
     }
            
-}
 
-}ß
+
+}
