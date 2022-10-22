@@ -1,9 +1,25 @@
 node {
-    checkout scm
+    def image 
+        stage('Check Git')
+        {
+            checkout scm
 
-    def customImage = docker.build("my-image:${env.BUILD_ID}")
+        }
 
-    customImage.inside {
-        sh 'echo hello'
-    }
+        stage('Build Image')
+        {
+            image = docker.build("my-image:${env.BUILD_ID}")
+        }
+
+        stage('Test Image')
+        {
+            image.inside("--entrypoint=''")
+            {
+            sh 'echo hello'
+            }
+
+        }
+
+
+
 }
