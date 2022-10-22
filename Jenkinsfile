@@ -11,14 +11,14 @@ node {
             image = docker.build("my-image:${env.BUILD_ID}")
         }
 
-        stage('Test Image')
-        {
-            image.inside()
-            {
-            sh 'echo hello'
-            }
+        // stage('Test Image')
+        // {
+        //     image.inside()
+        //     {
+        //     sh 'echo hello'
+        //     }
 
-        }
+        // }
 
 
 
